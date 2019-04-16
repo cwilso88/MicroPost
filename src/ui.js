@@ -41,7 +41,8 @@ class UI {
     }
 
     clearFields() {
-
+        this.titleInput.value = '';
+        this.bodyInput.value = '';
     }
 }
 
