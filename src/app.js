@@ -26,18 +26,24 @@ function submitPost() {
   const title = document.querySelector('#title').value;
   const body = document.querySelector('#body').value;
 
-  const data = {
-    title,
-    body
+  if(title === '' || body === '') {
+    ui.showAlert('Opps! You gotta put something in there!', 'alert alert-danger');
+  } else {
+
+    const data = {
+      title,
+      body
+    }
+
+    // Create Post
+    http.post('http://localhost:3000/posts', data)
+      .then(data => {
+        ui.showAlert('Yipee! Post added', 'alert alert-success');
+        ui.clearFields();
+        getPosts();
+      })
+      .catch(err => console.log(err));
   }
-  // Create Post
-  http.post('http://localhost:3000/posts', data)
-    .then(data => {
-      ui.showAlert('Yipee! Post added', 'alert alert-success');
-      ui.clearFields();
-      getPosts();
-    })
-    .catch(err => console.log(err));
 }
 
 // Delete Post
@@ -64,7 +70,15 @@ function enableEdit(e) {
     const body = e.target.parentElement.previousElementSibling.textContent;
     const title = e.target.parentElement.previousElementSibling.previousElementSibling.textContent;
 
+    const data = {
+      id, 
+      title,
+      body
+    }
 
+    // Fill from with current post
+    ui.fillForm(data);
   }
+
   e.preventDefault();
 }
