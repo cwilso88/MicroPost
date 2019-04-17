@@ -56,3 +56,15 @@ function deletePost(e) {
   }
   e.preventDefault();
 }
+
+// Enable Edit State
+function enableEdit(e) {
+  if(e.target.parentElement.classList.contains('edit')) {
+    const id = e.target.parentElement.dataset.id;
+    const body = e.target.parentElement.previousElementSibling.textContent;
+    const title = e.target.parentElement.previousElementSibling.previousElementSibling.textContent;
+
+
+  }
+  e.preventDefault();
+}
