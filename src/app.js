@@ -10,6 +10,9 @@ document.querySelector('.post-submit').addEventListener('click', submitPost);
 // Listen for delete
 document.querySelector('#posts').addEventListener('click', deletePost);
 
+// Listen for edit state
+document.querySelector('#posts').addEventListener('click', enableEdit);
+
 
 // Get Post
 function getPosts() {
@@ -18,7 +21,7 @@ function getPosts() {
     .catch(err => console.log(err));
 }
 
-// Add Post
+// Submit Post
 function submitPost() {
   const title = document.querySelector('#title').value;
   const body = document.querySelector('#body').value;
@@ -39,7 +42,6 @@ function submitPost() {
 
 // Delete Post
 function deletePost(e) {
-  e.preventDefault();
   if(e.target.parentElement.classList.contains('delete')) {
     const id = e.target.parentElement.dataset.id;
     if(confirm('Are you sure?')){
@@ -52,4 +54,5 @@ function deletePost(e) {
         .catch(err => console.log(err));
     }
   }
+  e.preventDefault();
 }
