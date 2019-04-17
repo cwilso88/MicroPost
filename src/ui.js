@@ -58,7 +58,7 @@ class UI {
             this.clearAlert();
         }, 3000);
     }
-
+    // Clear Alert 
     clearAlert() {
         const currentAlert = document.querySelector('.alert');
 
@@ -66,10 +66,18 @@ class UI {
             currentAlert.remove();
         }
     }
-
+    // Clear fields
     clearFields() {
         this.titleInput.value = '';
         this.bodyInput.value = '';
+    }
+
+    // Fill form to edit
+    fillForm(data) {
+        this.titleInput.value = data.title;
+        this.bodyInput.value = data.body;
+        this.idInput.value = data.id;
+
     }
 }
 
