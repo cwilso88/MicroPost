@@ -78,6 +78,32 @@ class UI {
         this.bodyInput.value = data.body;
         this.idInput.value = data.id;
 
+        this.changeFormState('edit');
+    }
+
+    // Change the form state
+    changeFormState(type) {
+        if(type === 'edit') {
+            this.postSubmit.textContent = 'Update Post';
+            this.postSubmit.className = 'post-submit btn btn-warning btn-block';
+
+            // Create Cancel Button
+            const button = document.createElement('button');
+                // Add classes to cancel button
+            button.className = 'post-cancel btn btn-light btn-block';
+                // Append cancel button
+            button.appendChild(document.createTextNode('Cancel Edit'));
+                // Insert in the DdOM
+            const cardForm = document.querySelector('.card-form');
+                // Get element to insert before
+            const formEnd = document.querySelector('.form-end');
+
+                // Insert cancel button
+            cardForm.insertBefore(button, formEnd);
+
+        } else {
+
+        }
     }
 }
 
